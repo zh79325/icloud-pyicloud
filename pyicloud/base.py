@@ -212,7 +212,12 @@ class PyiCloudService:
         verify=True,
         client_id=None,
         with_family=True,
+        china_mainland=False,
     ):
+        if china_mainland:
+            self.AUTH_ENDPOINT = "https://idmsa.apple.com.cn/appleauth/auth"
+            self.HOME_ENDPOINT = "https://www.icloud.com.cn"
+            self.SETUP_ENDPOINT = "https://setup.icloud.com.cn/setup/ws/1"
         if password is None:
             password = get_password_from_keyring(apple_id)
 
